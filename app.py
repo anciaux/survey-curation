@@ -21,6 +21,9 @@ def setup_session():
 
 
 def build_form():
+    st.write("# Willing to help authors curate and publish their data for a Journal?")
+    st.write("# What do you need ?")
+
     scientific_field = st.selectbox(
         "Scientific field:",
         [
