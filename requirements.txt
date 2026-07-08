@@ -1,3 +1,4 @@
 streamlit_survey
 matplotlib
 wordcloud
+qrcode

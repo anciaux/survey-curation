@@ -7,6 +7,7 @@ import uuid
 from collections import Counter
 from datetime import datetime
 
+import qrcode
 import streamlit as st
 
 st.set_page_config(layout="wide")
@@ -21,8 +22,22 @@ def setup_session():
 
 
 def build_form():
-    st.write("# Willing to help authors curate and publish their data for a Journal?")
-    st.write("# What do you need ?")
+    import io
+
+    qr = qrcode.QRCode(version=1, box_size=4, border=2)
+    qr.add_data("https://survey-curation-kb5vthfywnfhq3momv9w6k.streamlit.app/")
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="black", back_color="white")
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    col1, col2 = st.columns(2)
+    with col2:
+        st.image(buf.getvalue(), caption="Scan to access the survey", width=200)
+    with col1:
+        st.write(
+            "# Willing to help authors curate and publish their data for a Journal?"
+        )
+        st.write("# What do you need ?")
 
     scientific_field = st.selectbox(
         "Scientific field:",
