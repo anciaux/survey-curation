@@ -21,7 +21,7 @@ def setup_session():
         open(session_file, "a").close()
 
 
-def build_form():
+def show_qrcode():
     import io
 
     qr = qrcode.QRCode(version=1, box_size=4, border=2)
@@ -30,9 +30,13 @@ def build_form():
     img = qr.make_image(fill_color="black", back_color="white")
     buf = io.BytesIO()
     img.save(buf, format="PNG")
+    st.image(buf.getvalue(), caption="Scan to access the survey", width=200)
+
+
+def build_form():
     col1, col2 = st.columns(2)
     with col2:
-        st.image(buf.getvalue(), caption="Scan to access the survey", width=200)
+        show_qrcode()
     with col1:
         st.write(
             "# Willing to help authors curate and publish their data for a Journal?"
@@ -121,9 +125,13 @@ def show_progress():
     import matplotlib.pyplot as plt
     from wordcloud import STOPWORDS, WordCloud
 
-    st.write("# Submissions Progress")
+    col1, col2 = st.columns(2)
+    with col2:
+        show_qrcode()
+    with col1:
+        st.write("# Submissions Progress")
+        submissions_dir = "submissions"
 
-    submissions_dir = "submissions"
     os.makedirs(submissions_dir, exist_ok=True)
 
     current_files = sorted(
