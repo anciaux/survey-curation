@@ -117,8 +117,8 @@ def build_form():
                 f.write(f"Necessary features: {features}\n")
                 f.write("-" * 40 + "\n")
             st.success(f"Your contribution was saved")
-            st.write("Scientific field:", display_field)
-            st.write("Necessary features:", features)
+            # st.write("Scientific field:", display_field)
+            # st.write("Necessary features:", features)
 
 
 def show_progress():
