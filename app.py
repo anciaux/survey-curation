@@ -132,8 +132,8 @@ def show_progress():
     col1, col2 = st.columns(2)
     with col2:
         show_qrcode()
-        if st.button("Clear Survey?"):
-            import shutil
+        # if st.button("Clear Survey?"):
+        #     import shutil
 
             shutil.rmtree(submissions_dir)
     with col1:
