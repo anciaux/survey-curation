@@ -135,7 +135,7 @@ def show_progress():
         # if st.button("Clear Survey?"):
         #     import shutil
 
-            shutil.rmtree(submissions_dir)
+        #    shutil.rmtree(submissions_dir)
     with col1:
         st.write("# Submissions Progress")
 
