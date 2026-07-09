@@ -125,12 +125,17 @@ def show_progress():
     import matplotlib.pyplot as plt
     from wordcloud import STOPWORDS, WordCloud
 
+    submissions_dir = "submissions"
+
     col1, col2 = st.columns(2)
     with col2:
         show_qrcode()
+        if st.button("Clear Survey?"):
+            import shutil
+
+            shutil.rmtree("submissions_dir")
     with col1:
         st.write("# Submissions Progress")
-        submissions_dir = "submissions"
 
     os.makedirs(submissions_dir, exist_ok=True)
 
