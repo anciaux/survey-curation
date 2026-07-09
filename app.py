@@ -103,6 +103,8 @@ def build_form():
     if submitted:
         if not scientific_field:
             st.error("Please select a scientific field.")
+        if scientific_field == "Other" and other_field == "":
+            st.error("Please specify your custom scientific field.")
         elif not features.strip():
             st.warning("Please enter at least one necessary feature.")
         else:
@@ -116,7 +118,7 @@ def build_form():
                 f.write(f"Scientific field: {display_field}\n")
                 f.write(f"Necessary features: {features}\n")
                 f.write("-" * 40 + "\n")
-            st.success(f"Your contribution was saved")
+            st.success("Your contribution was saved")
             # st.write("Scientific field:", display_field)
             # st.write("Necessary features:", features)
 
